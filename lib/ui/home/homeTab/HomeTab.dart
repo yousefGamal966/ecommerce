@@ -10,8 +10,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../di/di.dart';
 import '../../../domain/model/Brand.dart';
 import '../../../domain/model/Product.dart';
-import '../categories/ProductsWidget.dart';
-
 class HomeTab extends StatefulWidget {
 
   @override
@@ -65,51 +63,53 @@ class _HomeTabState extends State<HomeTab> {
 
   Widget buildSuccessStateWidget(List<Category> categories,List<Brand>brands) {
     var mediaQuery = MediaQuery.of(context).size;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: mediaQuery.height*0.03,),
-          Row(
-            children: [
-              SizedBox(width: 10,),
-              Text('Categories',style: TextStyle(fontWeight: FontWeight.bold,
-                      fontSize: 18,color: Color(0xFF06004F)),),
-            ],
-          ),
-          SizedBox(height: 15,),
-          Container(
-            width: mediaQuery.width*1,
-            height: mediaQuery.height*0.3,
-            child: GridView.builder(
-                scrollDirection: Axis.horizontal,
-                gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount:2
-            ), itemBuilder: (context, index) {
-              return HomeCategoryWidget(category: categories[index]);
-            },itemCount: categories.length,),
-          ),
-          SizedBox(height:mediaQuery.height*0.1 ,),
-          Row(
-            children: [
-              SizedBox(width: 10,),
-              Text('Brands',style: TextStyle(fontWeight: FontWeight.bold,
-                  fontSize: 18,color: Color(0xFF06004F)),),
-            ],
-          ),
-          Container(
-            width: mediaQuery.width*1,
-            height: mediaQuery.height*0.3,
-            child: GridView.builder(
-              scrollDirection: Axis.horizontal,
-              gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: mediaQuery.height*0.03,),
+            Row(
+              children: [
+                SizedBox(width: 10,),
+                Text('Categories',style: TextStyle(fontWeight: FontWeight.bold,
+                        fontSize: 18,color: Color(0xFF06004F)),),
+              ],
+            ),
+            SizedBox(height: 15,),
+            Container(
+              width: mediaQuery.width*1,
+              height: mediaQuery.height*0.3,
+              child: GridView.builder(
+                  scrollDirection: Axis.horizontal,
+                  gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount:2
               ), itemBuilder: (context, index) {
-              return HomeBrandWidget(brands[index]);
+                return HomeCategoryWidget(category: categories[index]);
+              },itemCount: categories.length,),
+            ),
+            SizedBox(height:mediaQuery.height*0.1 ,),
+            Row(
+              children: [
+                SizedBox(width: 10,),
+                Text('Brands',style: TextStyle(fontWeight: FontWeight.bold,
+                    fontSize: 18,color: Color(0xFF06004F)),),
+              ],
+            ),
+            Container(
+              width: mediaQuery.width*1,
+              height: mediaQuery.height*0.3,
+              child: GridView.builder(
+                scrollDirection: Axis.horizontal,
+                gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount:2
+                ), itemBuilder: (context, index) {
+                return HomeBrandWidget(brands[index]);
 
-            },itemCount: brands.length,),
-          ),
-        ],
-      ) ;
+              },itemCount: brands.length,),
+            ),
+          ],
+        ),
+    ) ;
 
   }
 }

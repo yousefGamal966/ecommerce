@@ -4,7 +4,7 @@ import 'package:ecommerce/domain/model/Product.dart';
 
 import '../../../domain/model/Brand.dart';
 import '../../../domain/model/Category.dart';
-import 'SubcategoryDto.dart';
+import '../subCategory/SubCategoryDto.dart';
 
 
 /// sold : 8841
@@ -51,7 +51,7 @@ class ProductDto {
     if (json['subcategory'] != null) {
       subcategory = [];
       json['subcategory'].forEach((v) {
-        subcategory?.add(SubcategoryDto.fromJson(v));
+        subcategory?.add(SubCategoryDto.fromJson(v));
       });
     }
     ratingsQuantity = json['ratingsQuantity'];
@@ -71,7 +71,7 @@ class ProductDto {
   }
   num? sold;
   List<String>? images;
-  List<SubcategoryDto>? subcategory;
+  List<SubCategoryDto>? subcategory;
   num? ratingsQuantity;
   String? id;
   String? title;
@@ -87,7 +87,7 @@ class ProductDto {
   String? updatedAt;
 ProductDto copyWith({  num? sold,
   List<String>? images,
-  List<SubcategoryDto>? subcategory,
+  List<SubCategoryDto>? subcategory,
   num? ratingsQuantity,
   String? id,
   String? title,
@@ -161,7 +161,7 @@ ProductDto copyWith({  num? sold,
     ratingsAverage: ratingsAverage,
     ratingsQuantity: ratingsQuantity,
     sold: sold,
-    subcategory: subcategory?.map((subDto) =>subDto.toSubcategory() ).toList(),
+    subcategory: subcategory?.map((subDto) =>subDto.toSubCategory() ).toList(),
     );
   }
 

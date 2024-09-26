@@ -1,8 +1,9 @@
 
 
+import 'package:ecommerce/domain/model/SubCategory.dart';
+
 import 'Category.dart';
 import 'Brand.dart';
-import 'Subcategory.dart';
 
 /// sold : 8841
 /// images : ["https://ecommerce.routemisr.com/Route-Academy-products/1680403156555-3.jpeg","https://ecommerce.routemisr.com/Route-Academy-products/1680403156555-2.jpeg","https://ecommerce.routemisr.com/Route-Academy-products/1680403156554-1.jpeg","https://ecommerce.routemisr.com/Route-Academy-products/1680403156556-4.jpeg"]
@@ -42,7 +43,7 @@ class Product {
     if (json['subcategory'] != null) {
       subcategory = [];
       json['subcategory'].forEach((v) {
-        subcategory?.add(Subcategory.fromJson(v));
+        subcategory?.add(SubCategory.fromJson(v));
       });
     }
     ratingsQuantity = json['ratingsQuantity'];
@@ -59,7 +60,7 @@ class Product {
   }
   num? sold;
   List<String>? images;
-  List<Subcategory>? subcategory;
+  List<SubCategory>? subcategory;
   num? ratingsQuantity;
   String? title;
   String? slug;
@@ -73,7 +74,7 @@ class Product {
   String? id;
 Product copyWith({  int? sold,
   List<String>? images,
-  List<Subcategory>? subcategory,
+  List<SubCategory>? subcategory,
   num? ratingsQuantity,
   String? title,
   String? slug,

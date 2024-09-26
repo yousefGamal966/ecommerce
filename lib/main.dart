@@ -1,6 +1,9 @@
 
 import 'package:ecommerce/Providers/AuthProvider.dart';
+import 'package:ecommerce/Providers/CartProvider.dart';
+import 'package:ecommerce/Providers/FavoriteProvider.dart';
 import 'package:ecommerce/ui/home/HomeScreen.dart';
+import 'package:ecommerce/ui/home/productsTab/productDetails/ProductDetailsScreen.dart';
 import 'package:ecommerce/ui/login/LoginScreen.dart';
 import 'package:ecommerce/ui/register/RegisterScreen.dart';
 import 'package:ecommerce/ui/splash/SplashScreen.dart';
@@ -20,9 +23,18 @@ void main()async {
   );
   var provider = AuthProviders();
   runApp(
-      ChangeNotifierProvider(
-        create: (context) => provider,
-        child: MyApp(),
+      MultiProvider(
+          providers: [
+            ChangeNotifierProvider(create: (_)=> AuthProviders()),
+            ChangeNotifierProvider(create: (_)=> FavoriteProvider()),
+            ChangeNotifierProvider(create: (_)=> CartProvider()),
+
+
+          ],
+
+          child: MyApp()
+
+
       ));
 
 }
@@ -50,8 +62,7 @@ class _MyAppState extends State<MyApp> {
         primaryColor: Color(0xFF004182),
         useMaterial3: true,
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.white
+
 
         )
       ),

@@ -8,6 +8,7 @@ import 'package:http/http.dart'as http;
 import 'package:injectable/injectable.dart';
 
 import '../data/model/brandsResponse/BrandsResponse.dart';
+import '../data/model/subCategory/SubCategoryResponse.dart';
 @singleton
 @injectable
 class ApiManger{
@@ -31,4 +32,20 @@ class ApiManger{
   var productsResponse = ProductsResponse.fromJson(jsonDecode(response.body));
   return productsResponse;
   }
+  Future<CategoriesResponse> getSubCategories (String catId)async{
+  var url = Uri.https(baseUrl,'categories/$catId/subcategories');
+  var response = await http.get(url);
+  var categoriesResponse = CategoriesResponse.fromJson(jsonDecode(response.body));
+  return categoriesResponse;
+
+  }
+
+  Future<ProductsResponse> getSpecificProducts(String id)async{
+
+   var url = Uri.https(baseUrl,'api/v1/products/$id');
+   var response = await http.get(url);
+   var productsResponse = ProductsResponse.fromJson(jsonDecode(response.body));
+   return productsResponse;
+  }
+  
 }

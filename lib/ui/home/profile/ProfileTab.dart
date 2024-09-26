@@ -74,9 +74,9 @@ class _ProfileTabState extends State<ProfileTab> {
                         fontSize: 17,)),
                 ),
               )),
-          SizedBox(height: mediaQuery.height*0.05,),
-
           SizedBox(height: mediaQuery.height*0.3,),
+
+
 
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
