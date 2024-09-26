@@ -1,6 +1,7 @@
 
 import 'package:ecommerce/Providers/AuthProvider.dart';
 import 'package:ecommerce/ui/home/HomeScreen.dart';
+import 'package:ecommerce/ui/home/productsTab/productDetails/ProductDetailsScreen.dart';
 import 'package:ecommerce/ui/login/LoginScreen.dart';
 import 'package:ecommerce/ui/register/RegisterScreen.dart';
 import 'package:ecommerce/ui/splash/SplashScreen.dart';
@@ -50,8 +51,7 @@ class _MyAppState extends State<MyApp> {
         primaryColor: Color(0xFF004182),
         useMaterial3: true,
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.white
+
 
         )
       ),

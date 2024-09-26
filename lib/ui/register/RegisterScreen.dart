@@ -36,12 +36,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SizedBox(
-                height: 30,
-              ),
-              Container(
-                  width: double.infinity,
-                  child: Image.asset('assets/images/route.png')),
+              SizedBox(height: 30,),
+              Image.asset('assets/images/route_white.png'),
+
               Row(
                 children: [
                   Text(
@@ -55,7 +52,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 height: 20,
               ),
               CustomFormField(
-                  hintText: 'enter your full name',
+                  hintText: 'Enter Your Full Name',
                   keyboardType: TextInputType.name,
                   controller: fullNameController,
                   validator: (text) {
@@ -80,7 +77,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 height: 20,
               ),
               CustomFormField(
-                  hintText: 'enter your mobile number',
+                  hintText: 'Enter Your Mobile Number',
                   keyboardType: TextInputType.number,
                   controller: mobileNum,
                   validator: (text) {
@@ -105,7 +102,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 height: 20,
               ),
               CustomFormField(
-                  hintText: 'enter your email address',
+                  hintText: 'Enter Your E-mail address',
                   keyboardType: TextInputType.emailAddress,
                   controller: email,
                   validator: (text) {
@@ -133,7 +130,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 height: 20,
               ),
               CustomFormField(
-                  hintText: 'enter your password',
+                  hintText: 'Enter Your Password',
                   secure: true,
                   controller: password,
                   validator: (text) {
@@ -151,19 +148,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
               Container(
                   width: double.infinity,
                   margin: EdgeInsets.symmetric(horizontal: 5),
-                  padding: EdgeInsets.all(1),
+                  padding: EdgeInsets.all(10),
                   child: ElevatedButton(
+                    style: ButtonStyle(shape:  WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)))),
                     onPressed: () {
                       signUp();
                     },
-                    child: Text('Sign up'),
+                    child: Text('Sign up',style: TextStyle(color: Color(
+                        0xFF004181),fontSize: 20),),
                   )),
               TextButton(
                   onPressed: () {
                     Navigator.pushReplacementNamed(
                         context, LoginScreen.routeName);
                   },
-                  child: Text('Are you Have An Account ?'))
+                  child: Text('Are you Have An Account ?',style: TextStyle(color: Colors.white),))
             ],
           ),
         ),
