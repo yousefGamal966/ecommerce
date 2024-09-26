@@ -8,7 +8,7 @@ class DialogUtils {
         content: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(message),
+            Expanded(child: Text(message)),
             Container(
                 width: 25,
                 height: 25,

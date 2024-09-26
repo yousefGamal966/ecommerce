@@ -1,5 +1,6 @@
 import 'package:ecommerce/DialogUtils.dart';
 import 'package:ecommerce/FireBaseErrorCodes.dart';
+import 'package:ecommerce/Providers/CartProvider.dart';
 import 'package:ecommerce/ui/register/RegisterScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -131,8 +132,10 @@ class _LoginScreenState extends State<LoginScreen> {
       return ;
     }
     var authProvider = Provider.of<AuthProviders>(context,listen: false);
+    var cartProvider = Provider.of<CartProvider>(context,listen: false);
     try {
       DialogUtils.showLoading(context, 'Loading. Please Be Patient');
+      cartProvider.uid = authProvider.firebaseAuthUser!.uid;
       await authProvider.login(email.text, password.text);
       DialogUtils.hideDialog(context);
       DialogUtils.showMessage(context,'User Logged in Successful',posActionTitle: 'OK',posAction:(){

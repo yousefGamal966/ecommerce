@@ -39,8 +39,6 @@ import '../domain/useCases/GetMostSelling.dart' as _i490;
 import '../domain/useCases/GetSubCategoriesUseCase.dart' as _i30;
 import '../domain/useCases/SpecificProductUseCase.dart' as _i574;
 import '../ui/home/homeTab/HomeTabViewModel.dart' as _i314;
-import '../ui/home/productsTab/productDetails/ProductDetailsScreenViewModel.dart'
-    as _i26;
 import '../ui/home/productsTab/ProductsTabViewModel.dart' as _i103;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -85,8 +83,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i942.GetBrandsUseCase(gh<_i362.BrandsRepository>()));
     gh.factory<_i490.GetMostSelling>(
         () => _i490.GetMostSelling(gh<_i637.ProductsRepository>()));
-    gh.factory<_i26.ProductDetailsScreenViewModel>(() =>
-        _i26.ProductDetailsScreenViewModel(gh<_i574.SpecificProductUseCase>()));
     gh.factory<_i242.GetCategoriesUseCase>(
         () => _i242.GetCategoriesUseCase(gh<_i210.CategoriesRepository>()));
     gh.factory<_i103.ProductsTabViewModel>(() => _i103.ProductsTabViewModel(

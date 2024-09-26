@@ -1,5 +1,7 @@
 
 import 'package:ecommerce/Providers/AuthProvider.dart';
+import 'package:ecommerce/Providers/CartProvider.dart';
+import 'package:ecommerce/Providers/FavoriteProvider.dart';
 import 'package:ecommerce/ui/home/HomeScreen.dart';
 import 'package:ecommerce/ui/home/productsTab/productDetails/ProductDetailsScreen.dart';
 import 'package:ecommerce/ui/login/LoginScreen.dart';
@@ -21,9 +23,18 @@ void main()async {
   );
   var provider = AuthProviders();
   runApp(
-      ChangeNotifierProvider(
-        create: (context) => provider,
-        child: MyApp(),
+      MultiProvider(
+          providers: [
+            ChangeNotifierProvider(create: (_)=> AuthProviders()),
+            ChangeNotifierProvider(create: (_)=> FavoriteProvider()),
+            ChangeNotifierProvider(create: (_)=> CartProvider()),
+
+
+          ],
+
+          child: MyApp()
+
+
       ));
 
 }

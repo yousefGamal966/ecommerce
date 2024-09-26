@@ -15,32 +15,38 @@ class CategoriesWidget extends StatelessWidget {
 
        return Column(
          children: [
-
-
               Expanded(
                 child: InkWell(
                   onTap: (){
                     Navigator.push(context,MaterialPageRoute(builder: (context) =>  ProductDetailsScreen(product: product,) ,) );
                   },
                   child: Card(
+                    color:  Color(0xFFFDFDFD),
                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12),side:BorderSide(color: Color(
                        0xFF004181),width: 3) ),
                    child:Padding(
                      padding: const EdgeInsets.symmetric(horizontal: 8),
                      child: SingleChildScrollView(
-                       child: Column(
+                       child: Stack(
+
                          children: [
-                           CachedNetworkImage(imageUrl: product.imageCover??"" ,height: 120,width: 191,),
-                           Text(product.title??""),
-                           Row(
+
+                           Column(
                              children: [
-                               Text("${product.price??0} EGP"),
-                             ],
-                           ),
-                           Row(
-                             children: [
-                               Text("${product.ratingsAverage??""}"),
-                               Icon(Icons.star,color: Colors.amber,)
+
+                               CachedNetworkImage(imageUrl: product.imageCover??"" ,height: 120,width: 191,),
+                               Text(product.title??""),
+                               Row(
+                                 children: [
+                                   Text("${product.price??0} EGP"),
+                                 ],
+                               ),
+                               Row(
+                                 children: [
+                                   Text("${product.ratingsAverage??""}"),
+                                   Icon(Icons.star,color: Colors.amber,)
+                                 ],
+                               ),
                              ],
                            ),
                          ],

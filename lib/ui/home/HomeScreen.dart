@@ -8,31 +8,47 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../cartScreen/CartScreen.dart';
 import '../login/LoginScreen.dart';
 import 'favorite/FavoritesTab.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'home';
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   List<Widget> tabs =[
     HomeTab(),
     ProductsTab(),
     FavoritesTab(),
     ProfileTab()
   ];
+
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     var authProvider = Provider.of<AuthProviders>(context);
     return Container(
       child: Scaffold(
+        backgroundColor:  Color(0xFFFDFDFD),
        appBar:  AppBar(
+         backgroundColor:  Color(0xFFFDFDFD),
           elevation: 0,
-          title: Image.asset('assets/images/route.png')
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Image.asset('assets/images/route.png'),
+              IconButton(onPressed: (){
+                Navigator.push(context,MaterialPageRoute(builder: (context) =>  CartScreen() ,) );
+
+              }, icon: Icon(Icons.shopping_cart_outlined,color: Color(
+                  0xFF004181),))
+            ],
+          )
 
         ),
       bottomNavigationBar: BottomNavigationBar(

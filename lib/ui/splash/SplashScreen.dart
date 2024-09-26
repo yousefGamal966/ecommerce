@@ -2,6 +2,7 @@
 import 'dart:async';
 
 import 'package:ecommerce/Providers/AuthProvider.dart' as auth;
+import 'package:ecommerce/Providers/CartProvider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -27,15 +28,17 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Expanded(child: Image.asset('assets/images/splashScreen.png',fit: BoxFit.fill,)),
+      body: Image.asset('assets/images/splashScreen.png',fit: BoxFit.fill,width: double.infinity,height: double.infinity,),
 
     );
   }
 
   void navigate() async{
     var authProvider = Provider.of<auth.AuthProviders>(context,listen: false);
+    var cartProvider = Provider.of<CartProvider>(context,listen: false);
       if(FirebaseAuth.instance.currentUser != null){
         await authProvider.retrieveUserFromDatabase();
+        cartProvider.uid = authProvider.firebaseAuthUser!.uid;
          Navigator.pushReplacementNamed(context,HomeScreen.routeName);
 
       }else{
