@@ -63,7 +63,7 @@ class _CartScreenWidgetState extends State<CartScreenWidget> {
 
   void deleteTask() {
 
-    DialogUtils.showMessage(context,'Are You Sure To Delete This Task',posAction:(){
+    DialogUtils.showMessage(context,'Are You Sure To Delete This Product',posAction:(){
       deleteTaskFromFireStore();
     },posActionTitle: 'Yes',negActionTitle:'No' );
 

@@ -141,11 +141,6 @@ class _LoginScreenState extends State<LoginScreen> {
       DialogUtils.showMessage(context,'User Logged in Successful',posActionTitle: 'OK',posAction:(){
         Navigator.pushReplacementNamed(context, HomeScreen.routeName);
       });
-          
-      DialogUtils.hideDialog(context);
-      DialogUtils.showMessage(context,'User Logged in Successful',posActionTitle: 'OK',posAction:(){
-        Navigator.pushReplacementNamed(context, HomeScreen.routeName);
-      });
 
 
 

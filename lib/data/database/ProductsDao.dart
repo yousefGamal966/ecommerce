@@ -24,18 +24,18 @@ class ProductsDao {
     return doc.set(product);
   }
   static Future<List<ProductCart>> getAllProduct(String uid) async {
-     var taskSnapshot = await getProductsCollection(uid).get();
+     var productSnapshot = await getProductsCollection(uid).get();
 
     var tasksList =
-        taskSnapshot.docs.map((snapshot) => snapshot.data()).toList();
+        productSnapshot.docs.map((snapshot) => snapshot.data()).toList();
     return tasksList;
   }
 
   static Stream<List<ProductCart>> listenForProducts(String uid) async* {
 
-    var taskSnapshot =  getProductsCollection(uid).snapshots();
+    var productSnapshot =  getProductsCollection(uid).snapshots();
 
-    yield* taskSnapshot.map((querySnapshot) =>
+    yield* productSnapshot.map((querySnapshot) =>
         querySnapshot.docs.map((doc) => doc.data()).toList());
 
   }

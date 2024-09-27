@@ -20,18 +20,18 @@ class FavoritesDao {
     return doc.set(product);
   }
   static Future<List<Favorite>> getAllFavProduct(String uid) async {
-    var taskSnapshot = await getFavCollection(uid).get();
+    var favSnapshot = await getFavCollection(uid).get();
 
     var tasksList =
-    taskSnapshot.docs.map((snapshot) => snapshot.data()).toList();
+    favSnapshot.docs.map((snapshot) => snapshot.data()).toList();
     return tasksList;
   }
 
   static Stream<List<Favorite>> listenForFavProducts(String uid) async* {
 
-    var taskSnapshot =  getFavCollection(uid).snapshots();
+    var favSnapshot =  getFavCollection(uid).snapshots();
 
-    yield* taskSnapshot.map((querySnapshot) =>
+    yield* favSnapshot.map((querySnapshot) =>
         querySnapshot.docs.map((doc) => doc.data()).toList());
 
   }
